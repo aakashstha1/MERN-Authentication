@@ -5,6 +5,7 @@ const OAuth = () => {
   const { googleAuth, isOAuthLoading } = useAuthStore();
 
   return (
+    <div className="w-full flex justify-center">
       <GoogleLogin
         disabled={isOAuthLoading}
         onSuccess={async (res) => {
@@ -14,6 +15,7 @@ const OAuth = () => {
         onError={() => console.log("Login Failed")}
         text="continue with"
       />
+    </div>
   );
 };
 
