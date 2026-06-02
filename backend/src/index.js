@@ -24,7 +24,11 @@ app.use(cookieParser()); // allows us to parse incoming cookies
 //   next();
 // });
 
-app.use("/api/auth", authRoutes);
+app.get("/health", (req, res) => {
+  res.send("API is healthy");
+});
+
+app.use("/api/v1", authRoutes);
 
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static(path.join(__dirname, "/frontend/dist")));
@@ -33,8 +37,8 @@ app.use("/api/auth", authRoutes);
 //     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 //   });
 // }
+connectDB();
 
 app.listen(PORT, () => {
-  connectDB();
   console.log("Server is running on port: ", PORT);
 });
