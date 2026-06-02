@@ -6,6 +6,7 @@ const OAuth = () => {
 
   return (
     <GoogleLogin
+      className="w-full"
       disabled={isOAuthLoading}
       onSuccess={async (res) => {
         // Send the ID token from Google to backend for verification
