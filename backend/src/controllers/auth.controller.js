@@ -40,12 +40,13 @@ export const signup = async (req, res) => {
     //   100000 + Math.random() * 900000,
     // ).toString();
 
-  const verificationToken = crypto.randomInt(100000, 1000000).toString();
+    const verificationToken = crypto.randomInt(100000, 1000000).toString();
 
     const user = new User({
       email,
       password: hashedPassword,
       name,
+      isVerified: false,
       verificationToken,
       verificationTokenExpiresAt: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
     });
