@@ -11,6 +11,8 @@ export const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+  connectionTimeout: 15000,
+  socketTimeout: 15000,
 });
 
 export const sender = process.env.EMAIL_USER;
