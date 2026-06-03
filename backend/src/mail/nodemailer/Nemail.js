@@ -38,7 +38,6 @@ export const sendResetSuccessEmail = async (email) => {
 
 export const sendVerificationEmail = async (email, verificationCode) => {
   try {
-    console.log("1️⃣ Before sendMail");
     await transporter.sendMail({
       from: sender,
       to: email,
@@ -48,10 +47,8 @@ export const sendVerificationEmail = async (email, verificationCode) => {
         verificationCode,
       ),
     });
-    console.log("2️⃣ After sendMail");
     console.log("Verification email sent successfully");
   } catch (error) {
-    console.error("❌ EMAIL ERROR:", error);
     console.error("Error sending verification email:", error);
     throw new Error("Failed to send verification email");
   }
