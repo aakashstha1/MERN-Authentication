@@ -7,6 +7,7 @@ import path from "path";
 import { connectDB } from "./db/connectDB.js";
 
 import authRoutes from "./routes/auth.route.js";
+import { transporter } from "./mail/nodemailer/nodemailer.config.js";
 
 dotenv.config({ quiet: true });
 
@@ -47,6 +48,17 @@ app.use("/api/v1", authRoutes);
 // }
 connectDB();
 
-app.listen(PORT, () => {
-  console.log("Server is running on port: ", PORT);
-});
+const startServer = async () => {
+  try {
+    await transporter.verify();
+    console.log("✅ SMTP ready");
+  } catch (err) {
+    console.error("❌ SMTP verify failed:", err);
+  }
+
+  app.listen(process.env.PORT, () => {
+    console.log(`Server running on port ${process.env.PORT}`);
+  });
+};
+
+startServer();
