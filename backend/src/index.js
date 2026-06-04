@@ -30,6 +30,7 @@ app.use(
 );
 
 app.use(express.json()); // allows us to parse incoming requests:req.body
+app.use(express.urlencoded({ extended: true })); // allows us to parse incoming requests with urlencoded payloads
 app.use(cookieParser()); // allows us to parse incoming cookies
 
 // app.use((req, res, next) => {
