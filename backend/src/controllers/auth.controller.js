@@ -9,7 +9,7 @@ import {
   sendResetSuccessEmail,
   sendVerificationEmail,
   sendWelcomeEmail,
-} from "../mail/nodemailer/Nemail.js";
+} from "../mail/resend/Remail.js";
 
 // ---------------------------------------------------------- Signup -----------------------------------------------
 export const signup = async (req, res) => {
@@ -56,9 +56,7 @@ export const signup = async (req, res) => {
     // jwt
     generateTokenAndSetCookie(res, user._id);
 
-
     await sendVerificationEmail(user.email, verificationToken);
-
 
     res.status(201).json({
       success: true,

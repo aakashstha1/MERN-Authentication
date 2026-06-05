@@ -5,6 +5,8 @@ import toast from "react-hot-toast";
 // Axios instance
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api/v1",
+  // baseURL: "http://localhost:5000/api/v1",
+
   withCredentials: true,
 });
 
@@ -64,6 +66,7 @@ export const useAuthStore = create((set) => ({
       const msg = handleError(error, "Error signing up");
       set({ error: msg, isLoading: false });
       toast.error(msg);
+      // console.log("Error in signup ", error?.response || error);
       throw error;
     }
   },

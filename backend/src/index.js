@@ -18,6 +18,7 @@ const PORT = process.env.PORT || 8000;
 // const __dirname = path.resolve();
 
 const allowedOrigins = ["http://localhost:5173", process.env.CLIENT_URL];
+// const allowedOrigins = ["http://localhost:5173"];
 
 app.use(
   cors({
@@ -50,17 +51,6 @@ app.use("/api/v1", authRoutes);
 // }
 connectDB();
 
-const startServer = async () => {
-  try {
-    await transporter.verify();
-    console.log("✅ SMTP ready");
-  } catch (err) {
-    console.error("❌ SMTP verify failed:", err);
-  }
-
-  app.listen(process.env.PORT, () => {
-    console.log(`Server running on port ${process.env.PORT}`);
-  });
-};
-
-startServer();
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on port ${process.env.PORT}`);
+});
