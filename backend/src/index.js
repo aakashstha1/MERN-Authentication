@@ -49,8 +49,13 @@ app.use("/api/v1", authRoutes);
 //     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 //   });
 // }
-connectDB();
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
-});
+const startServer = async () => {
+  connectDB();
+
+  app.listen(process.env.PORT, () => {
+    console.log(`Server running on port ${process.env.PORT}`);
+  });
+};
+
+startServer();
