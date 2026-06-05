@@ -51,7 +51,7 @@ app.use("/api/v1", authRoutes);
 // }
 
 const startServer = async () => {
-  connectDB();
+  await connectDB();
 
   app.listen(process.env.PORT, () => {
     console.log(`Server running on port ${process.env.PORT}`);
